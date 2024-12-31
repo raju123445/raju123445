@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .header {
+            background-color: #6c757d;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #6c757d;
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .service-card {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 300px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .service-card img {
+            width: 120px;
+            height: 100px;
+            margin-bottom: 7px;
+        }
+        .service-card h2 {
+            font-size: 1.5rem;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+        .back-btn {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-btn a {
+            text-decoration: none;
+            background: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        .back-btn a:hover {
+            background: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Our Services</h1>
+    </div>
+    <div class="container">
+        <h1>What We Offer</h1>
+        <div class="services">
+            <div class="service-card">
+                <img src=".\images\secure.jpeg" alt="Voting">
+                <h2>Secure Online Voting</h2>
+                <p>Our platform ensures secure and reliable voting using advanced encryption and verification techniques.</p>
+            </div>
+            <div class="service-card">
+                <img src=".\images\realtimw.png" alt="Real-Time Results">
+                <h2>Real-Time Results</h2>
+                <p>Get instant election results with live updates as votes are tallied in real-time.</p>
+            </div>
+            <div class="service-card">
+                <img src=".\images\download.jpeg" alt="User Support">
+                <h2>24/7 Support</h2>
+                <p>Our dedicated support team is available round-the-clock to assist with any issues or questions.</p>
+            </div>
+            <div class="service-card">
+                <img src=".\images\analytics.png" alt="Analytics">
+                <h2>Detailed Analytics</h2>
+                <p>Access detailed insights and analytics for transparent election results and voter turnout.</p>
+            </div>
+        </div>
+        <div class="back-btn">
+            <a href="/">Go Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

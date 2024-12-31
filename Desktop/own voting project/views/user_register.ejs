@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333; 
+            font-family: Arial, sans-serif;
+            background-image: url(./images/bgkimg.avif);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 150%;
+            height: 200%;
+        }
+
+         /* Navbar Styles */
+         .navbar {
+            background: #87c8be;
+            height: 65px;
+            padding: 10px 20px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .navbar .heading h1 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .navbar .menu a {
+            text-decoration: none;
+            /* height: 50px;
+            width: 50px; */
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .navbar .menu a:hover {
+            height: 50px;
+            /* border:1px solid white; */
+            color: black;
+            /* background-color: black; */
+        }
+
+
+        /* Form Container */
+        .form-container {
+            background: antiquewhite;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 30px 40px;
+            width: 400px;
+            text-align: center;
+            margin-top: 100px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .form-container h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #4a90e2;
+        }
+
+        .form-container label {
+            font-size: 16px;
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .form-container input:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+        .form-container input[type="submit"] {
+            background: #4a90e2;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background: #357abd;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            .form-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="heading">
+            <h1 style="color: rgb(28, 28, 28); font-size: 34px;">ONLINE VOTING SYSTEM</h1>
+        </div>
+        <div class="menu" >
+            <!-- <a href="user_register">New User</a> -->
+            <a href="services">Services</a>
+            <a href="#">About</a>
+            <a href="#">Support</a>
+        </div>
+    </div>
+    <div class="form-container">
+        <h1>User Registration</h1>
+        <form action="user_register" method="POST">
+            <label for="voter_id">Voter ID</label>
+            <input type="text" id="voter_id" name="voter_id" placeholder="Enter Voter ID" required>
+    
+            <label for="voter_name">Voter Name</label>
+            <input type="text" id="voter_name" name="voter_name" placeholder="Enter Voter Name" required>
+    
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter Email" required>
+    
+            <label for="DOB">Date of Birth</label>
+            <input type="date" id="dob" name="dob" required>
+    
+            <label for="aadhar_no">Aadhar Number</label>
+            <input type="number" id="aadhar_no" name="aadhar_no" placeholder="Enter Aadhar Number" min="100000000000" max="999999999999" oninput="if(this.value.length > 12) this.value = this.value.slice(0, 12);" required>
+    
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required>
+    
+            <!-- Hidden input to store fingerprint data -->
+        <!-- <input type="hidden" id="fingerprint-data" name="fingerprint_data">
+
+        Button to capture fingerprint 
+        <button type="button" id="capture-fingerprint">Capture Fingerprint</button> -->
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    
+    <!-- <script>
+    document.getElementById("capture-fingerprint").addEventListener("click", async () => {
+        try {
+            const publicKey = {
+                challenge: Uint8Array.from("random-challenge-string", c => c.charCodeAt(0)),
+                rp: { name: "Your App" },
+                user: {
+                    id: Uint8Array.from("user-id", c => c.charCodeAt(0)),
+                    name: "user@example.com",
+                    displayName: "User Example",
+                },
+                pubKeyCredParams: [{ alg: -7, type: "public-key" }],
+                authenticatorSelection: {
+                    authenticatorAttachment: "platform",
+                    requireResidentKey: false,
+                    userVerification: "required",
+                },
+                timeout: 60000,
+            };
+    
+            const credential = await navigator.credentials.create({ publicKey });
+    
+            const fingerprintData = btoa(String.fromCharCode(...new Uint8Array(credential.rawId)));
+            document.getElementById("fingerprint-data").value = fingerprintData;
+            alert("Fingerprint captured successfully!");
+        } catch (error) {
+            console.error("Fingerprint capture failed:", error.message);
+            alert("Failed to capture fingerprint: " + error.message);
+        }
+    });
+    
+</script> -->
+<script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2024/12/11/12/20241211124405-1IQFBY2W.js"></script>
+
+    
+</body>
+</html>

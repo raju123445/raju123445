@@ -1,0 +1,392 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See Result</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Election Result</h1>
+
+    <% if (winner) { %>
+        <h3>The winner is Candidate Name: <%= winner.name %> with <%= winner.votes %> votes</h3>
+    <% } else { %>
+        <h3>No votes have been cast yet.</h3>
+    <% } %>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Vote ID</th>
+                <th>Voter ID</th>
+                <th>Candidate ID</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (votes.length > 0) { %>
+                <% for (var i = 0; i < votes.length; i++) { %>
+                    <tr>
+                        <td><%= votes[i].vote_id %></td>
+                        <td><%= votes[i].voter_id %></td>
+                        <td><%= votes[i].candidate_id %></td>
+                        <td><%= votes[i].voted_at %></td>
+                    </tr>
+                <% } %>
+            <% } else { %>
+                <tr>
+                    <td colspan="4">There is no database available</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See Result</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url(./images/bgkimg.avif);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 150%;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 34px;
+            text-decoration: underline;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #74c7eb;
+            font-size: 1.5rem;
+
+        }
+        mark{
+            margin: 7px;
+            /* padding: 5px; */
+            padding-right: 4px;
+            padding-left: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #28a745;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td {
+            color: #555;
+        }
+
+        td:first-child {
+            font-weight: bold;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            table, th, td {
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Election Result</h1>
+
+    <% if (winner) { %>
+        <h3>The winner is</h3> <H3>Candidate Name:<mark> <%= winner.name %></mark> with <mark><%= winner.votes %></mark> votes</h3>
+    <% } else { %>
+        <h3>No votes have been cast yet.</h3>
+    <% } %>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Vote ID</th>
+                <th>Voter ID</th>
+                <th>Candidate ID</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (votes.length > 0) { %>
+                <% for (var i = 0; i < votes.length; i++) { %>
+                    <tr>
+                        <td><%= votes[i].vote_id %></td>
+                        <td><%= votes[i].voter_id %></td>
+                        <td><%= votes[i].candidate_id %></td>
+                        <td><%= votes[i].voted_at %></td>
+                    </tr>
+                <% } %>
+            <% } else { %>
+                <tr>
+                    <td colspan="4">There is no database available</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See Result</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url(./images/bgkimg.avif);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 150%;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 34px;
+            text-decoration: underline;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            text-align: center;
+            color: #74c7eb;
+            font-size: 1.5rem;
+        }
+        mark{
+            margin: 7px;
+            padding-right: 4px;
+            padding-left: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #28a745;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td {
+            color: #555;
+        }
+
+        td:first-child {
+            font-weight: bold;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            table, th, td {
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Print Style */
+        @media print {
+            body {
+                background-image: none;
+                color: #000;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Election Result</h1>
+
+    <div id="winner-info">
+        <% if (winner) { %>
+            <h3>The winner is</h3> 
+            <h3>Candidate Name: <mark> <%= winner.name %> </mark> with <mark><%= winner.votes %></mark> votes</h3>
+        <% } else { %>
+            <h3>No votes have been cast yet.</h3>
+        <% } %>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Vote ID</th>
+                <th>Voter ID</th>
+                <th>Candidate ID</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (votes.length > 0) { %>
+                <% for (var i = 0; i < votes.length; i++) { %>
+                    <tr>
+                        <td><%= votes[i].vote_id %></td>
+                        <td><%= votes[i].voter_id %></td>
+                        <td><%= votes[i].candidate_id %></td>
+                        <td><%= votes[i].voted_at %></td>
+                    </tr>
+                <% } %>
+            <% } else { %>
+                <tr>
+                    <td colspan="4">There is no database available</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    <button class="no-print" onclick="printTable()">Print Results</button>
+
+    <script>
+        function printTable() {
+            // Get both the winner info and the table content
+            var printContent = document.getElementById("winner-info").outerHTML + document.querySelector("table").outerHTML;
+            var printWindow = window.open('', '', 'height=500, width=800');
+            printWindow.document.write('<html><head><title>Print Results</title>');
+            printWindow.document.write('<style>body {font-family: Arial, sans-serif;} table {border-collapse: collapse; width: 100%;} th, td {border: 1px solid #ddd; padding: 8px; text-align: center;} th {background-color: #4CAF50; color: white;} tr:nth-child(even) {background-color: #f2f2f2;} tr:hover {background-color: #ddd;}</style>');
+            printWindow.document.write('</head><body>');
+            printWindow.document.write(printContent);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
+</body>
+</html>
+

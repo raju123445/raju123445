@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Voting Bot</title>
+     <style>
+        .chatbox {
+    width: 400px;
+    height: 400px;
+    border: 1px solid black;
+    overflow-y: scroll;
+}
+
+.chat-messages {
+    padding: 10px;
+}
+
+.chat-message {
+    margin-bottom: 10px;
+}
+
+.user-message {
+    text-align: right;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.bot-message {
+    text-align: left;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.chat-input {
+    padding: 10px;
+}
+     </style>
+</head>
+<body>
+    <div class="chatbox">
+        <div class="chat-messages"></div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Enter your vote">
+            <button onclick="sendVote()">Send</button>
+        </div>
+    </div>
+    <script>
+        const chatMessages = document.querySelector('.chat-messages');
+        const userInput = document.getElementById('user-input');
+    
+        async function sendVote() {
+            const userMessage = userInput.value;
+    
+            // Display user's message
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.classList.add('chat-message', 'user-message');
+            userMessageDiv.textContent = userMessage;
+            chatMessages.appendChild(userMessageDiv);
+    
+            // Reset the input field
+            userInput.value = '';
+    
+            // Scroll to the latest message
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+    
+            try {
+                // Send the user's message to the backend API
+                console.log("HI")
+                const response = await fetch('http://localhost:3000/api/generate', {
+                method: 'POST',
+                mode: "no-cors",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: userMessage }),
+            });
+
+    
+                const data = await response.json();
+                const aiResponse = data.response || "No response received.";
+    
+                // Display the AI's response
+                const aiMessageDiv = document.createElement('div');
+                aiMessageDiv.classList.add('chat-message', 'bot-message');
+                aiMessageDiv.textContent = aiResponse;
+                chatMessages.appendChild(aiMessageDiv);
+    
+            } catch (error) {
+                console.error('Error:', error);
+    
+                // Display an error message
+                
+                const errorMessageDiv = document.createElement('div');
+                errorMessageDiv.classList.add('chat-message', 'bot-message');
+                errorMessageDiv.textContent = "There was an error processing your input. Please try again.";
+                chatMessages.appendChild(errorMessageDiv);
+            }
+    
+            // Scroll to the latest message
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    </script>
+    
+</body>
+</html>

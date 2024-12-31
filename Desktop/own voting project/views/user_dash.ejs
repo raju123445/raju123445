@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(./images/bgkimg.avif);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 150%;
+            height: 200%;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: #87c8be;
+            height: 65px;
+            padding: 10px 20px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .heading h1 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .navbar .menu a {
+            text-decoration: none;
+            /* height: 50px;
+            width: 50px; */
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.5em;
+            transition: color 0.3s;
+        }
+
+        .navbar .menu a:hover {
+            height: 50px;
+            /* border:1px solid white; */
+            color: black;
+            /* background-color: black; */
+        }
+
+        /* Dashboard Container */
+        .dashboard-container {
+            background: antiquewhite;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 60px 30px;
+            width: 800px;
+            height:400px;
+            margin: 100px auto 20px;
+            text-align: center;
+            border: 4px solid black;
+            border-radius: 10px;
+            border-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet) 2;
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-bottom: 20px;
+            color: #4a90e2;
+        }
+
+        .details-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .detail-item {
+            width: 50%;
+            font-size: 20px;
+            color: #555;
+            text-align: left;
+            padding-top: 30px;
+            padding-left: 50px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 420px; /* Adds spacing between buttons */
+            margin-top: 20px;
+        }
+
+        button {
+            background: #4a90e2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin-top: 40px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background: #357abd;
+        }
+
+        .logout-btn {
+            background: #e74c3c;
+        }
+
+        .logout-btn:hover {
+            background: #c0392b;
+        }
+
+        .go-to-vote-btn {
+            background: #27ae60;
+        }
+
+        .go-to-vote-btn:hover {
+            background: #229954;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="heading">
+            <h1 style="color: rgb(28, 28, 28); font-size: 34px;">ONLINE VOTING SYSTEM</h1>
+        </div>
+        <div class="menu" >
+            <!-- <a href="user_register">New User</a> -->
+            <a href="services">Services</a>
+            <a href="about_us">About</a>
+            <a href="support">Support</a>
+        </div>
+    </div>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <h1>Welcome, <%= name %>!</h1>
+        <div class="details-container">
+            <div class="detail-item"><strong>Email : </strong> <%= email %></div>
+            <div class="detail-item"><strong>DOB : </strong> <%= dob %></div>
+            <div class="detail-item"><strong>Voter ID : </strong> <%= voterId %></div>
+            <div class="detail-item"><strong>Aadhar ID : </strong> <%= aadhar_no %></div>
+        </div>
+        <div class="button-container">
+            <form action="/logout" method="POST">
+                <button type="submit" class="logout-btn">Log Out</button>
+            </form>
+            <form action="/gotovote" method="get">
+                <button type="submit" class="go-to-vote-btn">Go to Vote</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2024/12/11/12/20241211124405-1IQFBY2W.js"></script>
+</body>
+</html>

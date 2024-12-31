@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Voting System with Gemini AI</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        /* Same CSS as before */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+main {
+    padding: 1rem;
+}
+
+section {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+}
+
+form input, form select, form button {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+form button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#chat-output {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.5rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#user-query {
+    flex: 1;
+}
+
+#send-query {
+    padding: 0.5rem;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Online Voting System with AI Assistance</h1>
+    </header>
+
+    <main>
+        <section id="voting-section">
+            <h2>Vote for Your Candidate</h2>
+            <form id="voting-form">
+                <label for="voter-id">Voter ID:</label>
+                <input type="text" id="voter-id" placeholder="Enter your voter ID" required>
+                
+                <label for="candidate">Select Candidate:</label>
+                <select id="candidate" required>
+                    <option value="">--Select--</option>
+                    <option value="candidate1">Candidate 1</option>
+                    <option value="candidate2">Candidate 2</option>
+                    <option value="candidate3">Candidate 3</option>
+                </select>
+                
+                <button type="submit">Submit Vote</button>
+            </form>
+        </section>
+
+        <section id="query-assistant">
+            <h2>Ask about Voting</h2>
+            <div id="chat-container">
+                <div id="chat-output"></div>
+                <input type="text" id="user-query" placeholder="Type your question here...">
+                <button id="send-query">Ask</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Online Voting System</p>
+    </footer>
+
+    <script>
+        // Fetch API key and endpoint for Gemini
+const GEMINI_API_URL = "https://api.gemini.com/v1/query"; // Replace with the actual endpoint
+const GEMINI_API_KEY = "AIzaSyBiu0Hd3gcXQYWmX0bOYGnBOgNA0al3tCc"; // Replace with your API key
+
+// // Replace these with your actual API details
+// const GEMINI_API_URL = "https://api.example.com/v1/query"; // Replace with your actual API endpoint
+// const GEMINI_API_KEY = "your-api-key-here"; // Replace with your actual API key
+
+// Function to call the Gemini API
+async function fetchAIResponse(query) {
+    try {
+        const response = await fetch(GEMINI_API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${GEMINI_API_KEY}`,
+            },
+            body: JSON.stringify({ query }), // Payload structure depends on the API
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log("API Response:", data); // Debugging response
+            return data.answer || "No relevant answer found.";
+        } else {
+            console.error("API Error:", response.status, response.statusText); // Debugging status
+            return "Sorry, there was an error processing your query.";
+        }
+    } catch (error) {
+        console.error("Network or Fetch Error:", error); // Debugging error
+        return "Sorry, I couldn't connect to the server. Please try again later.";
+    }
+}
+
+// Chatbot logic
+document.getElementById("send-query").addEventListener("click", async function () {
+    const userQuery = document.getElementById("user-query").value.trim();
+    const chatOutput = document.getElementById("chat-output");
+
+    if (userQuery) {
+        const userMessage = `<div><strong>You:</strong> ${userQuery}</div>`;
+        chatOutput.innerHTML += userMessage;
+
+        const botResponse = await fetchAIResponse(userQuery);
+        const botMessage = `<div><strong>Bot:</strong> ${botResponse}</div>`;
+        chatOutput.innerHTML += botMessage;
+
+        chatOutput.scrollTop = chatOutput.scrollHeight;
+        document.getElementById("user-query").value = ""; // Clear input
+    }
+});
+
+
+    </script>
+</body>
+</html>
