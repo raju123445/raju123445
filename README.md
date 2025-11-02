@@ -83,8 +83,6 @@ _Thanks for visiting my profile! Feel free to explore my repositories and connec
 
 <p><img align="left" src="https://github-readme-stats.vercel.app/api/top-langs?username=raju123445&show_icons=true&locale=en&layout=compact" alt="raju123445" /></p>
 
-<p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=raju123445&show_icons=true&locale=en" alt="raju123445" /></p>
-
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=raju123445&" alt="raju123445" /></p>
 
 
